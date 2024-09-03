@@ -23,4 +23,5 @@
 	
 	</table>
 	</form>
+	<!-- 커밋 연습 -->
 <jsp:include page = "../includes/footer.jsp"></jsp:include>
