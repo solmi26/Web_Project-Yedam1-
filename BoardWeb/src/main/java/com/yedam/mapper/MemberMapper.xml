@@ -29,7 +29,7 @@
 </delete>
 
 <!-- 단건 조회 : 회원 추가할 때 회원 아이디가 있는지 확인, 조회할 경우-->
-<select id="selectMember" parameterType="String" resultType="com.yedam.vo.MemberVO">
+<select id="selectMember" parameterType="string" resultType="com.yedam.vo.MemberVO">
 	select member_id, -- memberId
 		   member_name,
 		   password,
