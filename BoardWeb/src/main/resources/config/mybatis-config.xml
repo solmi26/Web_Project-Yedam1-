@@ -6,7 +6,9 @@
 <settings>
  <setting name="mapUnderscoreToCamelCase" value="true"/> </settings>
  
- <typeAliases></typeAliases>
+ <typeAliases>
+ 	<typeAlias type="com.yedam.vo.BoardVO" alias="board"/>
+ </typeAliases>
   
   <environments default="development">
     <environment id="development">
@@ -21,5 +23,6 @@
   </environments>
   <mappers>
     <mapper resource="com/yedam/mapper/MemberMapper.xml"/>
+    <mapper resource="com/yedam/mapper/BoardMapper.xml"/>
   </mappers>
 </configuration>

@@ -8,6 +8,6 @@
 </head>
 <body>
 <h3>반갑습니다. 진솔미입니다.</h3>
-<a href="../index.jsp">index로 이동</a>
+<a href="index.jsp">index로 이동</a>
 </body>
 </html>

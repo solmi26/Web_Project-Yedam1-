@@ -1,36 +1,43 @@
 package com.yedam.common;
 
-import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-
-import com.yedam.mapper.MemberMapper;
-import com.yedam.vo.MemberVO;
+import com.yedam.service.BoardService;
+import com.yedam.service.BoardServiceImpl;
+import com.yedam.vo.BoardVO;
 
 public class AppTest {
 	public static void main(String[] args) {
-		MemberVO mvo = new MemberVO();
 		
-		mvo.setMemberId("user04");
-		mvo.setMemberName("이망고");
-		mvo.setPassword("1111");
-		mvo.setEmail("mango@naver.com");
+		BoardVO board = new BoardVO();
+		board.setTitle("수정2 입력테스트");
+//		board.setContent("수정2 내용 냐용");
+		board.setWriter("수정 lee");
+		board.setBoardNo(258);
 		
-		SqlSessionFactory factory = DataSource.getInstance();
-		SqlSession session = factory.openSession();
-		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		BoardService svc = new BoardServiceImpl();
 		
-		if(mapper.insertMember(mvo) == 1) {
-			session.commit();
-			System.out.println("정상 추가 되었습니다.");
-		}
+		// 추가
+		//svc.addBoard(board);
 		
-		List<MemberVO> list =  mapper.memberList();
+		// 목록
+//		svc.boardList().forEach(System.out::println);
 		
-		list.forEach(member -> {
-			System.out.println(member.toString());
-		});
+		// 수정
+//		svc.modifyBoard(board);
+		
+		// 단건 조회
+//		System.out.println(svc.getBoard(board.getBoardNo()));
+		
+		// 삭제
+		svc.removeBoard(258);
+		
+		// 목록
+//		svc.boardList().forEach(System.out::println);
+		
+
+		
+		
+		
+		
 	}
 
 }
