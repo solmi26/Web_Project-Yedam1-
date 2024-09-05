@@ -8,6 +8,8 @@ import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardFormControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.ModBoardControl;
+import com.yedam.control.ModBoardFormControl;
 
 public class MenuBoard {
 	public static MenuBoard instance = new MenuBoard();
@@ -30,6 +32,10 @@ public class MenuBoard {
 		// 등록(등록화면, 기능)
 		menu.put("/addBoardForm.do", new BoardFormControl());
 		menu.put("/addBoard.do", new AddBoardControl());
+		
+		// 수정(등록화면, 기능)
+		menu.put("/modBoardForm.do", new ModBoardFormControl());
+		menu.put("/modBoard.do", new ModBoardControl());
 		
 		return menu;
 	

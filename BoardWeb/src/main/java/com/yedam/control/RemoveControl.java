@@ -32,7 +32,7 @@ public class RemoveControl implements Control {
 		BoardService svc = new BoardServiceImpl();
 		BoardVO board = svc.getBoard(Integer.parseInt(bno));
 		
-		// 로그인 정보가 없거나 로긍ㄴ 정보와 작성자 다르면 삭제 불가
+		// 로그인 정보가 없거나 로그인 정보와 작성자 다르면 삭제 불가
 		if(logid == null || !logid.equals(board.getWriter())) {
 			request.setAttribute("message", "삭제 권한이 없습니다.");
 			request.setAttribute("board", board);

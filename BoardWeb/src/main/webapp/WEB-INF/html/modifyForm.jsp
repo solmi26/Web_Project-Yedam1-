@@ -11,7 +11,7 @@ String message = (String) request.getAttribute("message");
 	<p style="color : red;"><%=message %></p>
 	<%} %>
 
-<form action="modifyMember.do">
+<form action="modifyMember.do" method="post">
 	<input type="hidden" name="id" value="<%=member.getMemberId() %>">
 	<table class = "table">
   <tr>
@@ -31,8 +31,8 @@ String message = (String) request.getAttribute("message");
   </tr>
   
   <tr>
-  <td colspan="2" align="center"> <button class="btn btn-primary">저장</button> 
-  	   <button class="btn btn-secondary">취소</button></td>
+  <td colspan="2" align="center"> <button type="submit" class="btn btn-primary">저장</button> 
+  	   <button class="btn btn-secondary" type="button" onclick="location.href='memberList.do'">취소</button></td>
   </tr>
 </table>
 </form>

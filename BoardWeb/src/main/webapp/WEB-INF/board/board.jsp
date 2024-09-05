@@ -82,7 +82,7 @@
 </form>
 
 <a class="btn btn-primary" onclick="form_submit('boardList.do')">목록</a>
-<a href="boardList.do?page=${page}"  class="btn btn-warning ${board.writer ne logid ? 'disabled' : '' }">수정</a>
+<a class="btn btn-warning ${board.writer ne logid ? 'disabled' : '' }" onclick="form_submit('modBoardForm.do')">수정</a>
 <a class="btn btn-danger" onclick="form_submit('removeBoard.do')">삭제</a>
 <c:if test="${!empty message}">
 <span style="color:red;">${message}</span>
@@ -92,13 +92,11 @@
 <script type="text/javascript">
 
 	function form_submit(uri) {
-		document.forms.actForm = uri;
+		document.forms.actForm.action = uri;
 		document.forms.actForm.submit();
-		console.log(document.forms.actForm.submit())
 	}
 </script>
 
-</form>
 </div>
 </div>
 </div>
