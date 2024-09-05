@@ -17,8 +17,8 @@
 	</select>
 	
 	<insert id="insertBoard" parameterType="board">
-		insert into tbl_board (board_no, title, content, writer)
-		values(board_seq.nextval, #{title}, #{content}, #{writer})
+		insert into tbl_board (board_no, title, content, writer, image)
+		values(board_seq.nextval, #{title}, #{content}, #{writer}, #{image})
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">
@@ -45,16 +45,29 @@
 			   content,
 			   writer,
 			   view_cnt,
-			   creation_date
+			   creation_date,
+			   image
 		from tbl_board
 		where board_no = #{BoardNo}
 	</select>
 	
-	<select id="selectListPageing" resultType="board" parameterType="int">
+	<select id="selectListPageing" resultType="board" parameterType="com.yedam.common.SearchDTO">
 		select c.*
 		from (select rownum rn, b.*
       		from (select *
             	from tbl_board
+            	where
+            	<choose>
+            		<when test="condition == 'T'.toString()">
+            			title like'%' || #{keyword} || '%'
+            		</when>
+            		 <when test="condition == 'W'.toString()">
+            			writer like '%' || #{keyword} || '%'
+            		</when>
+            		<otherwise>
+            			title like '%' || #{keyword} || '%' or writer like '%' || #{keyword} || '%'
+            		</otherwise>
+            	</choose>
             	order by board_no desc) b
             	<![CDATA[
     		where rownum <= #{page} * 5) c
@@ -62,8 +75,20 @@
 		where c.rn > (#{page} -1) * 5
 	</select>
 	
-	<select id="selectCount" resultType="int">
+	<select id="selectCount" resultType="int" parameterType="com.yedam.common.SearchDTO">
 		select count(1)
 		from tbl_board
+		where
+            	<choose>
+            		<when test="condition == 'T'.toString()">
+            			title like'%' || #{keyword} || '%'
+            		</when>
+            		 <when test="condition == 'W'.toString()">
+            			writer like'%' || #{keyword} || '%'
+            		</when>
+            		<otherwise>
+            		title like'%' || #{keyword} || '%' or writer like'%' || #{keyword} || '%'
+            		</otherwise>
+            	</choose>
 	</select>
 </mapper>

@@ -9,9 +9,11 @@ import com.yedam.control.AddMemberControl;
 import com.yedam.control.GetMemberControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
+import com.yedam.control.LogoutControl;
 import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyFormControl;
 import com.yedam.control.ModifyMemberControl;
+import com.yedam.control.RemoveControl;
 import com.yedam.control.RemoveMemberControl;
 
 // 게시글 관련 메뉴와 컨트롤 등록. 팀원1
@@ -37,8 +39,10 @@ public class MenuMember {
 		
 		
 		// 로그인 관련
-//		menu.put("/loginForm.do", new LoginFormControl());
-//		menu.put("/login.do", new LoginControl());
+		menu.put("/loginForm.do", new LoginFormControl());
+		menu.put("/login.do", new LoginControl());
+		menu.put("/logout.do", new LogoutControl());
+		menu.put("/removeBoard.do", new RemoveControl());
 		return menu;
 	}
 }

@@ -4,28 +4,28 @@
 <jsp:include page = "../includes/header.jsp"></jsp:include>
 
 <h3>회원 상세 정보</h3>
-<% MemberVO member = (MemberVO) request.getAttribute("memberInfo"); %>
+
 
 	<table class = "table">
   <tr>
-    <th>회원 아이디</th> <td><%=member.getMemberId() %></td>
+    <th>회원 아이디</th> <td>${memberInfo.memberId}</td>
   </tr>
 	  <tr>
-    <th>회원 이름</th> <td><%=member.getMemberName() %></td>
+    <th>회원 이름</th> <td>${memberInfo.memberName}</td>
   </tr>
     <tr>
-    <th>바밀번호</th> <td><%=member.getPassword() %></td>
+    <th>바밀번호</th> <td>${memberInfo.password}</td>
   </tr>
     <tr>
-    <th>이메일</th> <td><%=member.getEmail() %></td>
+    <th>이메일</th> <td>${memberInfo.email}</td>
   </tr>
     <tr>
-    <th>가입 날짜</th> <td><%=member.getCreationDate() %></td>
+    <th>가입 날짜</th> <td>${memberInfo.creationDate}</td>
   </tr>
   
   <tr>
-  <td colspan="2" align="center"> <button class="btn btn-info" onclick="location.href='modifyForm.do?id=<%=member.getMemberId() %>'">수정</button> 
-  	   <button class="btn btn-danger" onclick="location.href='removeMember.do?id=<%=member.getMemberId() %>'">삭제</button></td>
+  <td colspan="2" align="center"> <button class="btn btn-info" onclick="location.href='modifyForm.do?id=${memberInfo.memberId}'">수정</button> 
+  	   <button class="btn btn-danger" onclick="location.href='removeMember.do?id=${memberInfo.memberId}'">삭제</button></td>
   </tr>
 </table>
 

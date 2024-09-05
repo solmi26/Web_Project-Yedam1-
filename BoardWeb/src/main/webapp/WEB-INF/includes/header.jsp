@@ -18,21 +18,21 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap ${empty logid ? '게스트' : logName+='님'}</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="addForm.do">회원 등록</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberList.do">회원 목록</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">게시글 목록</a>
                     <c:choose>
                     	<c:when test="${empty logid}">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm">로그인 화면</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm.do">로그인 화면</a>
                     </c:when>
                     <c:otherwise> <!-- 로그인 상태 -->
-					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm">로그아웃</a>                    
+					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">로그아웃(${logid})</a>                    
                     </c:otherwise>
                     </c:choose>
 					
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="addBoardForm.do">게시글 등록</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
                 </div>
             </div>
