@@ -17,15 +17,7 @@ public class ModBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8");
-		String page = request.getParameter("page");
-		String sc = request.getParameter("searchCondition");
-		String kw = request.getParameter("keyword");
-		
-		System.out.println(page);
-		System.out.println(sc);
-		System.out.println(kw);
-		
+	
 		// multipart 요청을 처리. 서버의 위치(images) 파일 복사
 		String saveDir = request.getServletContext().getRealPath("images");
 		int maxSize = 5 * 1024 * 1024; // 5MB
@@ -43,12 +35,17 @@ public class ModBoardControl implements Control {
 		String writer = mr.getParameter("writer");
 		String img = mr.getFilesystemName("srcImage");
 		
+		String page = mr.getParameter("page");
+		String sc = mr.getParameter("searchCondition");
+		String kw = mr.getParameter("keyword");
+		String bno = mr.getParameter("bno");
+		
 		BoardVO board = new BoardVO();
 		board.setTitle(title);
 		board.setContent(content);
 		board.setWriter(writer);
 		board.setImage(img);
-		
+		board.setBoardNo(Integer.parseInt(bno));
 		
 		BoardService svc = new BoardServiceImpl();
 		svc.modifyBoard(board);

@@ -15,7 +15,7 @@ public class AddFormControl implements Control {
 		// addForm.do -> 요청 재지정(WEB-INF/html/addForm.jsp)
 		
 		request.setAttribute("msg", "Hello, world"); // request 객체에 msg 전달
-		request.getRequestDispatcher("WEB-INF/html/addForm.jsp").forward(request, response);
+		request.getRequestDispatcher("html/addForm.tiles").forward(request, response);
 	}
 
 }

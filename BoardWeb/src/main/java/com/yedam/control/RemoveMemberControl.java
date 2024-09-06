@@ -27,7 +27,7 @@ public class RemoveMemberControl implements Control {
 			response.sendRedirect("memberList.do");
 		}else {
 			request.setAttribute("message", "삭제 중 오류가 발생했습니다.");
-			request.getRequestDispatcher("WEB-INF/html/memberInfo.jsp").forward(request,response);
+			request.getRequestDispatcher("html/memberInfo.tiles").forward(request,response);
 		}
 				
 	}

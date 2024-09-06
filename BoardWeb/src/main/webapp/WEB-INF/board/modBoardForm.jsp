@@ -3,12 +3,11 @@
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<jsp:include page = "../includes/header.jsp"></jsp:include>
 <h3>게시글 수정 화면</h3>
 <p></p>
 <form action="modBoard.do" method="post" enctype="multipart/form-data">
 	<input type="hidden" name ="writer" value="${logid}">
-	
+	<input type="hidden" name ="bno" value="${boardInfo.boardNo}">
     <input type="hidden" name="keyword" value="${param.keyword}">
     <input type="hidden" name="searchCondition" value="${param.searchCondition}">
     <input type="hidden" name="page" value="${param.page}">
@@ -44,5 +43,3 @@
 
 </table>
 </form>
-
-<jsp:include page = "../includes/footer.jsp"></jsp:include>

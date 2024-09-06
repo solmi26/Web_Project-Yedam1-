@@ -30,7 +30,7 @@ public class ModBoardFormControl implements Control {
 		request.setAttribute("sc", sc);
 		request.setAttribute("kw", kw);
 		
-		request.getRequestDispatcher("WEB-INF/board/modBoardForm.jsp").forward(request, response);
+		request.getRequestDispatcher("board/modBoardForm.tiles").forward(request, response);
 	}
 
 }

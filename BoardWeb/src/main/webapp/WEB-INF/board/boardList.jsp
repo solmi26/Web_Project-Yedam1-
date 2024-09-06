@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<jsp:include page = "../includes/header.jsp"></jsp:include>
+
 
 <h3>게시글 목록</h3>
 <!-- 
@@ -103,6 +103,3 @@
   </ul>
 </nav>
 
-
-<p>${paging}</p>
-<jsp:include page = "../includes/footer.jsp"></jsp:include>

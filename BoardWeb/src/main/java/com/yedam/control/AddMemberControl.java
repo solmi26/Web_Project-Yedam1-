@@ -46,7 +46,7 @@ public class AddMemberControl implements Control {
 			response.sendRedirect("memberList.do");
 		}else {
 			request.setAttribute("message", "등록 중 오류가 발생했습니다.");
-			request.getRequestDispatcher("WEB-INF/html/addForm.jsp").forward(request,response);
+			request.getRequestDispatcher("html/addForm.tiles").forward(request,response);
 		}
 	}
 

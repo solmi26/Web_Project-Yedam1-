@@ -43,7 +43,7 @@ public class ModifyMemberControl implements Control {
 			response.sendRedirect("memberList.do");
 		}else {
 			request.setAttribute("message", "수정 할 정보가 없습니다.");
-			request.getRequestDispatcher("WEB-INF/html/modifyForm.jsp").forward(request,response);
+			request.getRequestDispatcher("html/modifyForm.tiles").forward(request,response);
 		}
 	
 	}
