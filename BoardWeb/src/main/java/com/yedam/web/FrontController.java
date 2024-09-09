@@ -5,22 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
-import com.yedam.control.AddFormControl;
-import com.yedam.control.AddMemberControl;
-import com.yedam.control.GetMemberControl;
 import com.yedam.control.IntroControl;
 import com.yedam.control.JavaScriptControl;
 import com.yedam.control.MainControl;
-import com.yedam.control.MemberListControl;
-import com.yedam.control.ModifyFormControl;
-import com.yedam.control.ModifyMemberControl;
-import com.yedam.control.RemoveMemberControl;
 import com.yedam.control.SubControl;
 
 //@WebServlet("*.do")
@@ -52,11 +44,12 @@ public class FrontController extends HttpServlet{
 //		map.put("/removeMember.do", new RemoveMemberControl()); // 삭제 처리
 		
 		Map<String, Control> memberMenu = MenuMember.getInstance().menuMap();
-		
 		Map<String, Control> boardMenu = MenuBoard.getInstance().menuMap();
+		Map<String, Control> replyMenu = MenuReply.getInstance().menuMap();
 		
 		map.putAll(memberMenu); // 멤버 관련 메뉴 추가
 		map.putAll(boardMenu); // 게시글 관련 메뉴 추가
+		map.putAll(replyMenu); // 댓글 관련 메뉴 추가
 	}
 	
 	// HttpServletRequest

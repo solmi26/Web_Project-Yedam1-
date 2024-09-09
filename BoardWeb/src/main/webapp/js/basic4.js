@@ -21,3 +21,17 @@ let result =  data.filter(function(item,idx,ary){
 	 } 
 	
  });
+ 
+ // 검색 클릭 이벤트
+ document.getElementById('searchBtn').addEventListener('click', function(e){
+	 let salary = document.getElementById('salary').value;
+	 let gender = document.getElementById('gender').value;
+	 console.log(salary, gender);
+	 
+	 let result = data.filter(function(item, idx, ary){
+		 if(item.salary >= salary && item.gender == gender){
+			 return true;
+		 }
+	 });
+	 console.log(result)
+ })
