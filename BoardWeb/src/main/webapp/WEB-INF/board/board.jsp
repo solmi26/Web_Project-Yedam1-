@@ -4,7 +4,17 @@
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-
+<style>
+	div.reply.div{
+		margin: auto;
+	}
+	div.reply ul{
+		list-style-type: none;
+	}
+	div.reply span{
+		display: inline-block;
+	}
+</style>
 
 <h3>글 상세 페이지</h3>
 
@@ -43,12 +53,17 @@
 			</td>
 		</tr>
 		<tr>
-			<th class="active" >내용</th>
+			<th class="active">내용</th>
 			<td colspan="3" align="left">${board.content}</td>
-			<c:if test="${!empty board.image}">
-			<td rowspan="5"><img width="300px" src="images/${board.image}"></td>			
-			</c:if>
-		</tr>
+			<c:choose>
+					<c:when test="${!empty board.image}">
+							<td rowspan="5"><img width="300px" src="images/${board.image}"></td>
+					</c:when>
+					<c:otherwise>
+							<td rowspan="5"></td> <!-- 이미지가 없을 때 빈 셀을 추가 -->
+					</c:otherwise>
+			</c:choose>
+	</tr>
 		
 		<tr>
 			<th >작성자</th>
@@ -88,7 +103,42 @@
 </c:if>
 </div>
 
+</div>
+</div>
+</div>
+</div>
+
+<!-- 댓글관련-->
+ <div class="container reply">
+	<!-- 댓글 등록-->
+	 <div class="header">
+		<input type="text" id="reply" class="col-sm-9">
+		<button id="addReply" class="btn btn-primary">댓글 등록</button>
+	 </div>
+
+	<!--댓글 목록-->
+	<div class="content">
+<ul><li>
+	<span class="col-sm-2">글번호</span>
+	<span class="col-sm-5">댓글내용</span>
+	<span class="col-sm-2">작성자</span>
+	<span class="col-sm-2"> <button>삭제</button> </span>
+</li>
+<hr />
+	<li id="template">
+		<span class="col-sm-2">24</span>
+		<span class="col-sm-5">테스형입니다.</span>
+		<span class="col-sm-2">user01</span>
+		<span class="col-sm-2"><button class="btn btn-danger">삭제</button></span>
+	</li>
+</ul>
+	</div>
+ </div>
+
 <script type="text/javascript">
+
+const bno = '${board.boardNo}';
+const writer = '${logid}'; // 로그인 정보
 
 	function form_submit(uri) {
 		document.forms.actForm.action = uri;
@@ -96,9 +146,6 @@
 	}
 </script>
 
-</div>
-</div>
-</div>
-</div>
-
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/replyService.js"></script>
+<script src="js/replyBoard.js"></script>
