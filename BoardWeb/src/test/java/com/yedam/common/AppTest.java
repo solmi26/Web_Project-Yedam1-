@@ -10,9 +10,13 @@ public class AppTest {
 		SqlSession sqlSesson = DataSource.getInstance().openSession(true);
 		ReplyMapper mapper = sqlSesson.getMapper(ReplyMapper.class);
 		
-		String[] arg = {"23", "24", "25", "26"};
-		mapper.deleteReplys(arg);
 		
+		SearchDTO search = new SearchDTO();
+		
+		search.setBoardNo(526);
+		search.setPage(2);
+		
+		mapper.selectListPaging(search).forEach(reply -> System.out.println(reply));
 //		BoardVO board = new BoardVO();
 //		board.setTitle("수정2 입력테스트");
 ////		board.setContent("수정2 내용 냐용");

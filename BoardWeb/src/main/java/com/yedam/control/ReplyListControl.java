@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
+import com.yedam.common.SearchDTO;
 import com.yedam.service.ReplyService;
 import com.yedam.service.ReplyServiceImpl;
 import com.yedam.vo.ReplyVO;
@@ -27,8 +28,15 @@ public class ReplyListControl implements Control {
 	
 		Map<String, Object> map = new HashMap<>(); // JSON 객체를 생성하기 위한 map 선언
 		String bno = request.getParameter("bno");
+		String page = request.getParameter("page");
+		
+		// 검색조건 SearchDTO
+		SearchDTO search = new SearchDTO();
+		search.setBoardNo(Integer.parseInt(bno));
+		search.setPage(Integer.parseInt(page));
 		ReplyService svc = new ReplyServiceImpl();
-		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno));
+		List<ReplyVO> list = svc.replyList(search);
+		
 		String json = "[";
 		
 		for(int i=0; i<list.size(); i++) {

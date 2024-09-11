@@ -17,7 +17,8 @@ public class BoardServiceImpl implements BoardService
 	
 	@Override
 	public List<BoardVO> boardList(SearchDTO search) {
-		return mapper.selectListPageing(search);
+		//return mapper.selectListPageing(search);
+		return mapper.selectList();
 	}
 	
 	@Override

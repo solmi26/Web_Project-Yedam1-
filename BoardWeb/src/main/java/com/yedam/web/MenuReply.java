@@ -13,7 +13,9 @@ import com.yedam.control.ModBoardControl;
 import com.yedam.control.ModBoardFormControl;
 import com.yedam.control.ReomveReplyControl;
 import com.yedam.control.ReomveReplysControl;
+import com.yedam.control.ReplyCountControl;
 import com.yedam.control.ReplyListControl;
+import com.yedam.control.ReplyTableControl;
 
 public class MenuReply {
 	public static MenuReply instance = new MenuReply();
@@ -35,6 +37,11 @@ public class MenuReply {
 		menu.put("/removeReplys.do", new ReomveReplysControl());
 		//등록 컨트롤
 		menu.put("/addReply.do", new AddReplyControl());
+		// 댓글 건수 컨트롤
+		menu.put("/replyCount.do", new ReplyCountControl());
+		
+		// 댓글작성 dataTabel용
+		menu.put("/replyTable.do", new ReplyTableControl());
 		
 		return menu;
 	
