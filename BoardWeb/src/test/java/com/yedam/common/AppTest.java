@@ -1,7 +1,12 @@
 package com.yedam.common;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yedam.mapper.ReplyMapper;
 
 public class AppTest {
@@ -11,12 +16,11 @@ public class AppTest {
 		ReplyMapper mapper = sqlSesson.getMapper(ReplyMapper.class);
 		
 		
-		SearchDTO search = new SearchDTO();
+		List<Map<String,Object>> list = mapper.selectEvent();
 		
-		search.setBoardNo(526);
-		search.setPage(2);
-		
-		mapper.selectListPaging(search).forEach(reply -> System.out.println(reply));
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson(list);
+		System.out.println(json);
 //		BoardVO board = new BoardVO();
 //		board.setTitle("수정2 입력테스트");
 ////		board.setContent("수정2 내용 냐용");

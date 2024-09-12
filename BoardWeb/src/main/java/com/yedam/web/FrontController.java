@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.control.EventControl;
 import com.yedam.control.IntroControl;
 import com.yedam.control.JavaScriptControl;
 import com.yedam.control.MainControl;
@@ -33,6 +34,11 @@ public class FrontController extends HttpServlet{
 		map.put("/sub.do", new SubControl());
 		map.put("/intro.do", new IntroControl());
 		map.put("/javascript.do", new JavaScriptControl());
+		
+		// fullCalendar 관련
+		map.put("/eventList.do", new EventControl());
+		map.put("/addEvent.do", new EventControl());
+		map.put("/removeEvent.do", new EventControl());
 		
 //		// 기능등록
 //		map.put("/addForm.do", new AddFormControl()); // 회원 등록 페이지
